@@ -2,7 +2,7 @@
 
 int main() {
     //Declaração das variaves.
-    int  c1_p_turisticos, c2_p_turisticos;
+    int  c1_p_turisticos, c2_p_turisticos, menu;
     float c1_area, c1_pib, c2_area, c2_pib, c1_d_populacional, c2_d_populacional, c1_pib_per, c2_pib_per, 
           c1_superpoder, c2_superpoder ;
     char c1_estado[2], c1_c_carta[4], c1_cidade[40], c2_estado[2], c2_c_carta[4], c2_cidade[40]; 
@@ -109,48 +109,90 @@ int main() {
     printf("\n\n********************\n");
     printf("Comparação das cartas\n");
     printf("********************\n\n");
-        if (c1_populacao > c2_populacao){//Comparando populaçao
-            printf("População: %s venceu %u.\n", c1_cidade, c1_populacao);
-        }else{
-            printf("População: %s venceu %u.\n", c2_cidade, c2_populacao);
-        }
+    printf("Escolha um atributo para comparar: \n");
+    printf("[1] População\n");
+    printf("[2] Área\n");
+    printf("[3] PIB\n");
+    printf("[4] Pontos Turisticos\n");
+    printf("[5] Densidade Populacional\n");
+    printf("[6] PIB Per Capta\n");
+    printf("[7] Super Poder\n\n");
+        scanf("%d", &menu);
 
-        if(c1_area > c2_area){//Comparando area
-            printf("Área: %s venceu %.0f \n",c1_cidade, c1_area );
-        }else{
-            printf("Área: %s venceu %.0f \n",c2_cidade, c2_area );
-        }
+        switch (menu){
+            case 1:
+                if (c1_populacao > c2_populacao){//Comparando populaçao
+                    printf("População: %s venceu %u.\n", c1_cidade, c1_populacao);
+                }else if (c1_populacao < c2_populacao){
+                    printf("População: %s venceu %u.\n", c2_cidade, c2_populacao);
+                }else{
+                    printf("Os atributos empataram");
+                }
+            break;
 
-        if(c1_pib > c2_pib){//Comparando PIB
-            printf("PIB: %s venceu %.0f \n",c1_cidade, c1_pib );
-        }else{
-            printf("PIB: %s venceu %.0f \n",c2_cidade, c2_pib );
-        }
+            case 2:
+                if(c1_area > c2_area){//Comparando area
+                    printf("Área: %s venceu %.0f \n",c1_cidade, c1_area );
+                }else if (c1_area < c2_area){
+                    printf("Área: %s venceu %.0f \n",c2_cidade, c2_area );
+                }else{
+                    printf("Os atributos empataram");
+                }
+            break;
 
-        if(c1_p_turisticos > c2_p_turisticos){//Comparando Pontos Turisticos
-            printf("Pontos Turisticos: %s venceu %d \n",c1_cidade, c1_p_turisticos );
-        }else{
-            printf("Pontos Turisticos: %s venceu %d \n",c2_cidade, c2_p_turisticos );
-        }
+            case 3:
+                if(c1_pib > c2_pib){//Comparando PIB
+                    printf("PIB: %s venceu %.0f \n",c1_cidade, c1_pib );
+                }else if(c1_pib < c2_pib){
+                    printf("PIB: %s venceu %.0f \n",c2_cidade, c2_pib );
+                }else{
+                    printf("Os atributos empataram");
+                }
+            break;
 
-        if(c1_d_populacional < c2_d_populacional){//Densidade Populacional
-            printf("Densidade Populacional: %s venceu %.0f \n",c1_cidade, c1_d_populacional );
-        }else{
-            printf("Densidade Populacional: %s venceu %.0f \n",c2_cidade, c2_d_populacional );
-        }
+            case 4:
+                if(c1_p_turisticos > c2_p_turisticos){//Comparando Pontos Turisticos
+                    printf("Pontos Turisticos: %s venceu %d \n",c1_cidade, c1_p_turisticos );
+                }else if (c1_p_turisticos < c2_p_turisticos){
+                    printf("Pontos Turisticos: %s venceu %d \n",c2_cidade, c2_p_turisticos );
+                }else{
+                    printf("Os atributos empataram");
+                }
+            break;
 
-        if(c1_pib_per > c2_pib_per){//Comparando PIB per capta.
-            printf("PIB per Capta: %s venceu %.0f \n",c1_cidade, c1_pib_per );
-        }else{
-            printf("PIB per Capta: %s venceu %.0f \n",c2_cidade, c2_pib_per );
-        }
-        
-        if(c1_superpoder > c2_superpoder){//Comparando Super Poder
-            printf("Super Poder: %s venceu %.0f \n",c1_cidade, c1_superpoder );
-        }else{
-            printf("Super Poder: %s venceu %.0f \n",c2_cidade, c2_superpoder );
-        }
+            case 5:
+                if(c1_d_populacional < c2_d_populacional){//Densidade Populacional
+                    printf("Densidade Populacional: %s venceu %.0f \n",c1_cidade, c1_d_populacional );
+                }else if (c1_d_populacional > c2_d_populacional){
+                    printf("Densidade Populacional: %s venceu %.0f \n",c2_cidade, c2_d_populacional );
+                }else{
+                    printf("Os atributos empataram");
+                }
+            break;
 
+            case 6:
+                if(c1_pib_per > c2_pib_per){//Comparando PIB per capta.
+                    printf("PIB per Capta: %s venceu %.0f \n",c1_cidade, c1_pib_per );
+                }else if(c1_pib_per < c2_pib_per){
+                    printf("PIB per Capta: %s venceu %.0f \n",c2_cidade, c2_pib_per );
+                }else{
+                    printf("Os atributos empataram");
+                }
+            break;
+
+            case 7:
+                if(c1_superpoder > c2_superpoder){//Comparando Super Poder
+                    printf("Super Poder: %s venceu %.0f \n",c1_cidade, c1_superpoder );
+                }else if(c1_superpoder < c2_superpoder){
+                    printf("Super Poder: %s venceu %.0f \n",c2_cidade, c2_superpoder );
+                }else{
+                    printf("Os atributos empataram");
+                }
+            break;
+
+            default:
+                printf("Opção inválida.\n");
+        }
 
     return 0;
 }
