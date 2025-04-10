@@ -18,6 +18,7 @@ int main() {
     printf("Nome da cidade: ");
     getchar();
     fgets(c1_cidade, sizeof(c1_cidade), stdin);
+    c1_cidade[strcspn(c1_cidade, "\n")] = 0; //Remove o /n do fgets
    
     printf("População: ");
     scanf("%u", &c1_populacao);
@@ -49,6 +50,7 @@ int main() {
     printf("Nome da cidade: ");
     getchar();
     fgets(c2_cidade, sizeof(c2_cidade), stdin);
+    c2_cidade[strcspn(c2_cidade, "\n")] = 0; //Remove o /n do fgets
    
     printf("População: ");
     scanf("%u", &c2_populacao);
@@ -78,7 +80,7 @@ int main() {
     printf("******************************\n\n");
     printf("Estado: %s \n", c1_estado);
     printf("Codigo da carta: %s\n", c1_c_carta);
-    printf("Nome da cidade: %s", c1_cidade);
+    printf("Nome da cidade: %s\n", c1_cidade);
     printf("População: %u \n", c1_populacao);
     printf("Área: %.2f Km²\n", c1_area);
     printf("PIB: R$ %.2f\n", c1_pib);
@@ -93,7 +95,7 @@ int main() {
     printf("******************************\n\n");
     printf("Estado: %s \n", c2_estado);
     printf("Codigo da carta: %s\n", c2_c_carta);
-    printf("Nome da cidade: %s", c2_cidade);
+    printf("Nome da cidade: %s\n", c2_cidade);
     printf("População: %u \n", c2_populacao);
     printf("Área: %.2f Km² \n", c2_area);
     printf("PIB: R$ %.2f\n", c2_pib);
@@ -107,14 +109,48 @@ int main() {
     printf("\n\n********************\n");
     printf("Comparação das cartas\n");
     printf("********************\n\n");
-    printf("População: Carta 1 venceu (%u)\n", c1_populacao > c2_populacao);
-    printf("Área: Carta 1 venceu (%.0f)\n",c1_area > c2_area );
-    printf("PIB: Carta 1 venceu (%.0f)\n", c1_pib > c2_pib);
-    printf("Pontos Turísticos: Carta 1 venceu (%d)\n", c1_p_turisticos > c2_p_turisticos);
-    printf("Densidade Populacional: Carta 1 venceu (%.0f)\n", c1_d_populacional < c2_d_populacional); // < vence a carta de menor valor
-    printf("PIB per Capita: Carta 1 venceu (%.0f)\n", c1_pib_per > c2_pib_per);
-    printf("Super Poder: Carta 1 venceu (%.0f)", c1_superpoder > c2_superpoder);
-    
+        if (c1_populacao > c2_populacao){//Comparando populaçao
+            printf("População: %s venceu %u.\n", c1_cidade, c1_populacao);
+        }else{
+            printf("População: %s venceu %u.\n", c2_cidade, c2_populacao);
+        }
+
+        if(c1_area > c2_area){//Comparando area
+            printf("Área: %s venceu %.0f \n",c1_cidade, c1_area );
+        }else{
+            printf("Área: %s venceu %.0f \n",c2_cidade, c2_area );
+        }
+
+        if(c1_pib > c2_pib){//Comparando PIB
+            printf("PIB: %s venceu %.0f \n",c1_cidade, c1_pib );
+        }else{
+            printf("PIB: %s venceu %.0f \n",c2_cidade, c2_pib );
+        }
+
+        if(c1_p_turisticos > c2_p_turisticos){//Comparando Pontos Turisticos
+            printf("Pontos Turisticos: %s venceu %d \n",c1_cidade, c1_p_turisticos );
+        }else{
+            printf("Pontos Turisticos: %s venceu %d \n",c2_cidade, c2_p_turisticos );
+        }
+
+        if(c1_d_populacional < c2_d_populacional){//Densidade Populacional
+            printf("Densidade Populacional: %s venceu %.0f \n",c1_cidade, c1_d_populacional );
+        }else{
+            printf("Densidade Populacional: %s venceu %.0f \n",c2_cidade, c2_d_populacional );
+        }
+
+        if(c1_pib_per > c2_pib_per){//Comparando PIB per capta.
+            printf("PIB per Capta: %s venceu %.0f \n",c1_cidade, c1_pib_per );
+        }else{
+            printf("PIB per Capta: %s venceu %.0f \n",c2_cidade, c2_pib_per );
+        }
+        
+        if(c1_superpoder > c2_superpoder){//Comparando Super Poder
+            printf("Super Poder: %s venceu %.0f \n",c1_cidade, c1_superpoder );
+        }else{
+            printf("Super Poder: %s venceu %.0f \n",c2_cidade, c2_superpoder );
+        }
+
 
     return 0;
 }
